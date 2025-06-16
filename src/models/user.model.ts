@@ -12,10 +12,10 @@ export class UserModel {
   @Column({ type: 'varchar', nullable: false })
   lastName: string;
 
-  @Column({ type: 'varchar', nullable: false })
+  @Column({ type: 'varchar', nullable: false, unique:true })
   username: string;
 
-  @Column({ type: 'varchar', nullable: false })
+  @Column({ type: 'varchar', nullable: false, unique:true})
   email: string;
 
 
@@ -23,5 +23,5 @@ export class UserModel {
   password: string;
 
   @Column({ type: 'enum', enum: USER_TYPE, nullable: false })
-  user_type?: USER_TYPE;
+  user_type: USER_TYPE;
 }
