@@ -24,5 +24,5 @@ export class UserDTO {
 
   @IsEnum(USER_TYPE)
   @IsOptional()
-  user_type?: USER_TYPE;
+  user_type: USER_TYPE;
 }
