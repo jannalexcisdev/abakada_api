@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, InternalServerErrorException, NotFoundException, Param, ParseIntPipe, Patch, Post, UnauthorizedException, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, InternalServerErrorException, NotFoundException, Param, ParseIntPipe, Patch, Post, UnauthorizedException, ValidationPipe } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserDTO } from './dto/user_register.dto';
 import { UserUpdateDTO } from './dto/user_update.dto';
@@ -39,5 +39,8 @@ export class UserController {
       return await this.userService.deleteUser(id)
   }
 
-  
+  @Get()
+  getUsers() {
+    return this.userService.getUsers()
+  }
 }
