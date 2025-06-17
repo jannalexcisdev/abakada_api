@@ -25,6 +25,10 @@ export class UserService {
     return user
   }
 
+  async getUsers() {
+    return await this.userRepository.find()
+  }
+
   async updateUser(id: number, userUpdateDTO: UserUpdateDTO): Promise<UserModel | null> {
     await this.userRepository.update(id, userUpdateDTO)
     return await this.userRepository.findOne({ where: { id } })
