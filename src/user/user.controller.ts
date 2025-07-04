@@ -26,6 +26,16 @@ export class UserController {
     return this.userService.login(username, password)
   }
   
+  @Get()
+  getUsers() {
+    return this.userService.getUsers()
+  }
+
+  @Get(':id')
+  getUser(@Param('id', ParseIntPipe) id:number) {
+    return this.userService.getUser(id)
+  }
+  
   @Patch(':id')
   async updateUser(@Param('id', ParseIntPipe) id:number, @Body(ValidationPipe) userUpdateDTO:UserUpdateDTO) {
     if (await this.userService.findOne(id)) 
@@ -37,10 +47,5 @@ export class UserController {
   async deleteUser(@Param('id', ParseIntPipe) id:number) {
     if (await this.userService.findOne(id))
       return await this.userService.deleteUser(id)
-  }
-
-  @Get()
-  getUsers() {
-    return this.userService.getUsers()
   }
 }
